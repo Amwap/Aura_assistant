@@ -1,10 +1,12 @@
 import logging
 from modules.BotCallback import dp, types
-
+from modules.View import *
 
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message: types.Message):
-    await message.reply("Hi!nI'm EchoBot!nPowered by aiogram.")
+    # await message.reply("Hi!nI'm EchoBot!nPowered by aiogram.")
+    await send_text(message)
+
 
 
 @dp.message_handler(regexp='(^cat[s]$puss)')
