@@ -1,6 +1,9 @@
-import logging
-from modules.BotCallback import bot
 
+from modules.BotCallback import bot, logging
+import modules.KeyBoards as kb
+import modules.LanguagePack as lp
 
-async def send_text(message):
-    await bot.send_message(message.from_user.id, 'text')
+async def mainView(message):
+    text = lp.welcome_text['ru']
+    a = await message.answer(text, reply_markup=kb.client_main)
+    print(a)

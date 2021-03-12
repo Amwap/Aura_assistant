@@ -1,12 +1,12 @@
 import logging
 from modules.BotCallback import dp, types
-from modules.View import *
+import modules.View as view
+
 
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message: types.Message):
     # await message.reply("Hi!nI'm EchoBot!nPowered by aiogram.")
-    await send_text(message)
-
+    await view.mainView(message)
 
 
 @dp.message_handler(regexp='(^cat[s]$puss)')
@@ -18,3 +18,8 @@ async def cats(message: types.Message):
 @dp.message_handler()
 async def echo(message: types.Message):
     await message.answer(message.text)
+
+
+@dp.callback_query_handler(regexp='(^language)')
+async def initialize_mailing(callback: types.CallbackQuery):
+    print(callback.data)
