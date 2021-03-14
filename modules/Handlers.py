@@ -3,10 +3,9 @@ from modules.BotCallback import dp, types
 import modules.View as view
 
 
-@dp.message_handler(commands=['start', 'help'])
+@dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
-    # await message.reply("Hi!nI'm EchoBot!nPowered by aiogram.")
-    await view.mainView(message)
+    await view.disclaimerView(message)
 
 
 @dp.message_handler(regexp='(^cat[s]$puss)')
@@ -17,7 +16,7 @@ async def cats(message: types.Message):
 
 @dp.message_handler()
 async def echo(message: types.Message):
-    await message.answer(message.text)
+    await view.transactionView(message)
 
 
 @dp.callback_query_handler(regexp='(^language)')
