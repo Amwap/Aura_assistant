@@ -2,7 +2,9 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import modules.LanguagePack as lp
 
 def keyboard_render(schema):
-    keyboards = {'ru': InlineKeyboardMarkup(), 'en': InlineKeyboardMarkup()}
+    keyboards = {}
+    for lang in lp.used_languages:
+        keyboards[lang] = InlineKeyboardMarkup()
     for lang in keyboards.keys():
         keyboard = keyboards[lang]
         for button in schema:
@@ -19,14 +21,22 @@ def keyboard_render(schema):
 common = {
     'disclaimer': keyboard_render(
         [
-            [('accept', 'none')],
-        ],
-
+            [('accept', 'disclaimer accept')],
+        ]
+    ),
     'select language': keyboard_render(
         [
-            [('russian', 'none')],
-            [('english', 'none')]
+            [('russian', 'language ru')],
+            [('english', 'language en')]
         ]
-    )
+    ),
+    'select currency': keyboard_render(
+        [
+            [('ruble', 'currency RUB')],
+            [('dollar', 'currency USD')],
+            [('euro', 'currency EUR')],
+            # [('C.U.', 'currency C.U.' )],
+        ]
+    ),
 }
 

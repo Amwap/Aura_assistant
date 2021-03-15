@@ -4,21 +4,32 @@ import modules.View as view
 
 
 @dp.message_handler(commands=['start'])
-async def send_welcome(message: types.Message):
+async def take_disclaimer(message: types.Message):
     await view.disclaimerView(message)
 
-
-@dp.message_handler(regexp='(^cat[s]$puss)')
-async def cats(message: types.Message):
-    with open('datacats.jpg', 'rb') as photo:
-        await message.reply_photo(photo, caption='Cats are here 😺')
-
-
-@dp.message_handler()
-async def echo(message: types.Message):
-    await view.transactionView(message)
-
+@dp.callback_query_handler(lambda d: d.data and d.data.startswith("disclaimer accept"))
+async def ask_language(callback: types.CallbackQuery):
+    # TODO удалить предыдущую сцену
+    # TODO Создание профиля через функцию 
+    await view.languageView(callback)
 
 @dp.callback_query_handler(regexp='(^language)')
-async def initialize_mailing(callback: types.CallbackQuery):
-    print(callback.data)
+async def ask_currency(callback: types.CallbackQuery):
+    # TODO удалить предыдущую сцену
+    # TODO Добавить язык в профиль БД
+    await view.currencyView(callback)
+
+@dp.callback_query_handler(regexp='(^currency)')
+async def ask_cash(callback: types.CallbackQuery):
+    # TODO удалить предыдущую сцену
+    # TODO Добавить валюту в профиль БД
+    # TODO Изменить состояние на "ожидание ввода блланса"
+    await view.getCashView(callback)
+
+# TODO хендлер для введёной суммы с проверкой на число + добавить ответ в сцену
+
+
+
+
+
+

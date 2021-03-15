@@ -1,3 +1,5 @@
+used_languages = ['ru', 'en']
+
 
 view = {
 
@@ -17,8 +19,8 @@ messages = {
         'en': "Select currency:"    
     },
     'enter cash':{
-        'ru': "Выберите валюту:",
-        'en': "Select currency:"    
+        'ru': "Подсчитайте и введите сумму ваших средств:",
+        'en': "Calculate and enter the amount of your funds:"    
     },
 }
 
@@ -39,6 +41,22 @@ buttons = {
         'ru': "Отменить",
         'en': "Cancel" 
     },
+    'ruble': {
+        'ru': "Рубль (RUB) ₽",
+        'en': "Ruble (RUB) ₽" 
+    },
+    'dollar': {
+        'ru': "Доллар (USD) $",
+        'en': "Dollar (USD) $" 
+    },
+    'euro': {
+        'ru': "Евро (EUR) €",
+        'en': "Euro (EUR) €" 
+    },
+    # 'C.U.':{
+    #     'ru': "Условные единицы",
+    #     'en': "conventional units" 
+    # },
 
 
 }
